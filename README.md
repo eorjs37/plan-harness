@@ -31,6 +31,8 @@
 
 ## 기획 프로세스
 
+[기획 프로세스 사용 가이드](planning-process-guide.md)에서 Codex CLI 실행 방법과 단계별 산출물 작성·검토 절차를 확인할 수 있습니다.
+
 대표나 타 부서에서 받은 요청과 기획자가 직접 제안한 기능은 같은 흐름으로 정리합니다.
 
 1. **요청 접수** — 누가 어떤 기능이나 변경을 제안했는지 기록합니다.
@@ -83,3 +85,36 @@
    2026년 12월 26일까지 당일을 포함해 노출해요.
    홈 화면의 ‘추천채널’ 영역은 항상 있어요.
    ```
+
+## Codex CLI로 Figma 화면정의서와 프로세스 흐름 작성하기
+
+1. 기능 폴더에 `requirements.md`와 `tasks.md`를 준비합니다. 저장소 루트에서 `codex`를 실행하고, Figma MCP가 연결되어 있고 대상 Figma Design 파일에 편집 권한이 있는지 확인합니다.
+2. Codex 입력창에 `$define-screen-flow` 뒤에 프로젝트 폴더명, 기능 폴더명, Figma Design URL을 차례로 입력합니다. 예시 URL은 실제 파일, 페이지 또는 프레임 링크로 바꿉니다. 기준 화면이 정해져 있다면 해당 프레임 링크를 사용합니다.
+
+   ```text
+   $define-screen-flow raidio-biz winter-new-channel-popup https://www.figma.com/design/FILE_KEY/Raidio-Biz?node-id=123-456
+   ```
+
+3. Codex가 알려준 Figma 섹션 링크를 엽니다. **화면정의서**에는 화면 요소, 표시 조건, 사용자 동작과 상태별 정책이 정리됩니다. **프로세스 흐름**에는 시작 화면부터 결과까지 사용자 행동과 화면 이동, 조건별 분기와 예외가 표시됩니다.
+4. 결과와 함께 안내된 ‘확인 필요’ 항목을 검토합니다. 파일 링크만 입력해 기준 화면을 특정하기 어려운 경우에는 Codex에 해당 프레임 링크를 전달합니다.
+
+[define-screen-flow 스킬 문서](.agents/skills/define-screen-flow/SKILL.md)
+
+## 요청사항 변경 가이드
+
+[요청사항 변경 가이드 보기](change-request-guide.md)
+
+## Codex CLI로 프로젝트별 작업현황표 내보내기
+
+저장소 루트에서 `codex`를 실행한 뒤, Codex 입력창에 `$export-project-status`와 프로젝트 폴더명을 입력합니다. 전체 프로젝트를 내보내려면 프로젝트 폴더명 대신 `all`을 입력합니다.
+
+```text
+$export-project-status raidio-biz
+$export-project-status all
+```
+
+현황표는 기본적으로 [status-reports/](status-reports/)에 `<프로젝트>-status.md`로 저장됩니다. 다른 폴더에 저장하려면 프로젝트명 뒤에 저장소 루트 기준 폴더 경로를 입력합니다. 같은 위치에서 다시 실행하면 기존 현황표가 갱신됩니다.
+
+현황표에는 기능별·프로젝트별 **기획 산출물 작성률**과 기능별 **미작성 문서 목록**이 표시됩니다. 기능마다 요청서(`request.md`), 분석서(`analysis.md`), 요구사항(`requirements.md`), 실행 과제(`tasks.md`)를 확인합니다. 파일이 없거나 비어 있거나 양식만 남아 있으면 미작성으로 집계합니다. 예를 들어 4종 중 3종을 작성하면 **75% (3/4)**로 표시됩니다. 등록된 기능이 없는 프로젝트는 **해당 없음**으로 표시합니다.
+
+[현황표 예시](status-reports/raidio-biz-status.md) · [export-project-status 스킬 문서](.agents/skills/export-project-status/SKILL.md)
