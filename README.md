@@ -31,11 +31,6 @@
 │   ├── raidio-biz/                       # raidio-biz 프로젝트
 │   │   ├── project.md                    # 프로젝트 목표, 범위, 주요 결정 사항
 │   │   └── features/                     # 기능별 기획 문서 폴더
-│   │       └── winter-new-channel-popup/ # 겨울 신규채널 안내 기능
-│   │           ├── request.md            # 요청 배경과 기대 결과
-│   │           ├── analysis.md           # 요청 내용 검토와 확인이 필요한 질문
-│   │           ├── requirements.md       # 사용자 흐름, 정책, 예외, 확인 기준
-│   │           └── tasks.md              # 실행 과제, 선행 조건, 완료 조건
 │   └── raidio-brand/                     # raidio-brand 프로젝트
 │       ├── project.md                    # 프로젝트 목표, 범위, 주요 결정 사항
 │       └── features/                     # 기능별 기획 문서 폴더
@@ -65,13 +60,13 @@
 ## Codex CLI로 기능 요청서 추가하기
 
 1. 저장소 루트에서 터미널을 열고 `codex`를 실행합니다.
-2. Codex 입력창에 `$new-feature` 뒤에 프로젝트 폴더명과 새 기능 폴더명을 차례로 입력합니다. 기능 폴더명은 `winter-new-channel-popup`처럼 영문 소문자, 숫자, 하이픈으로 작성합니다.
+2. Codex 입력창에 `$new-feature` 뒤에 프로젝트 폴더명과 새 기능 폴더명을 차례로 입력합니다. 기능 폴더명은 영문 소문자, 숫자, 하이픈으로 작성합니다.
 
    ```text
-   $new-feature raidio-biz winter-new-channel-popup
+   $new-feature raidio-biz <기능-폴더명>
    ```
 
-3. Codex가 알려준 경로에서 `request.md`를 엽니다. 위 예시에서는 공용 템플릿을 `projects/raidio-biz/features/winter-new-channel-popup/request.md`로 복사합니다. 같은 기능 폴더가 이미 있으면 생성이 중단되므로 기존 요청서를 열어 작성하면 됩니다.
+3. Codex가 알려준 경로에서 `request.md`를 엽니다. 위 예시에서는 공용 템플릿을 `projects/raidio-biz/features/<기능-폴더명>/request.md`로 복사합니다. 같은 기능 폴더가 이미 있으면 생성이 중단되므로 기존 요청서를 열어 작성하면 됩니다.
 4. 각 질문 아래의 ‘여기에 입력’을 답변으로 바꿉니다. 마크다운 문법을 몰라도 평소처럼 글을 적으면 됩니다. 아직 모르는 항목은 ‘확인 필요’라고 적습니다.
 
 ## Codex CLI로 기능 요청서 분석하기
@@ -80,7 +75,7 @@
 2. 저장소 루트에서 `codex`를 실행하고, Codex 입력창에 프로젝트 폴더명과 기능 폴더명을 순서대로 입력합니다.
 
    ```text
-   $analyze-request raidio-biz winter-new-channel-popup
+   $analyze-request raidio-biz <기능-폴더명>
    ```
 
 3. 같은 기능 폴더에 생성된 `analysis.md`를 확인합니다. 변경 내용과 적용 위치가 명확하고 기존 흐름이나 정책에 영향이 없는 요청은 **검토 요약**에 변경 내용과 확인 방법을 적습니다. 추가 검토가 필요하면 현재 흐름, 근거, 해결 방법 등 필요한 항목을 작성합니다.
@@ -94,17 +89,15 @@
 2. 저장소 루트에서 `codex`를 실행하고, Codex 입력창에 다음과 같이 입력합니다.
 
    ```text
-   $define-requirements raidio-biz winter-new-channel-popup
+   $define-requirements raidio-biz <기능-폴더명>
    ```
 
 3. 같은 기능 폴더에 생성된 `requirements.md`를 확인합니다. Codex는 요청서와 분석서를 바탕으로 사용자 흐름, 정책과 예외, 동작 확인 방법을 작성하고, 미확정 내용은 **결정이 필요한 사항**에 남깁니다.
 4. 분석서에 답변을 추가한 뒤에는 같은 명령을 입력하고 기존 `requirements.md`에 답변을 반영해 달라고 요청합니다. 추가로 확정한 정책은 Codex 입력창에 바로 전달할 수도 있습니다.
 
    ```text
-   raidio-biz의 winter-new-channel-popup/requirements.md를 갱신해주세요.
-   겨울 신규채널 안내는 스와이퍼의 첫 번째 항목에 표시해요.
-   2026년 12월 26일까지 당일을 포함해 노출해요.
-   홈 화면의 ‘추천채널’ 영역은 항상 있어요.
+   raidio-biz의 <기능-폴더명>/requirements.md를 갱신해주세요.
+   홈 배너는 홈 화면에 처음 진입했을 때 표시해요.
    ```
 
 ## Codex CLI로 Figma 화면정의서와 프로세스 흐름 작성하기
@@ -113,7 +106,7 @@
 2. Codex 입력창에 `$define-screen-flow` 뒤에 프로젝트 폴더명, 기능 폴더명, Figma Design URL을 차례로 입력합니다. 예시 URL은 실제 파일, 페이지 또는 프레임 링크로 바꿉니다. 기준 화면이 정해져 있다면 해당 프레임 링크를 사용합니다.
 
    ```text
-   $define-screen-flow raidio-biz winter-new-channel-popup https://www.figma.com/design/FILE_KEY/Raidio-Biz?node-id=123-456
+   $define-screen-flow raidio-biz <기능-폴더명> https://www.figma.com/design/FILE_KEY/Raidio-Biz?node-id=123-456
    ```
 
 3. Codex가 알려준 Figma 섹션 링크를 엽니다. **화면정의서**에는 화면 요소, 표시 조건, 사용자 동작과 상태별 정책이 정리됩니다. **프로세스 흐름**에는 시작 화면부터 결과까지 사용자 행동과 화면 이동, 조건별 분기와 예외가 표시됩니다.
