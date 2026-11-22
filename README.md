@@ -6,27 +6,48 @@
 
 ```text
 .
-├── README.md                         # 저장소 소개와 디렉터리 구조
-├── AGENTS.md                         # 기획 작업 흐름과 문서 작성 지침
-├── .agents/                          # 이 저장소에서 사용하는 Codex 설정
-│   └── skills/                       # Codex에서 호출할 수 있는 저장소 전용 스킬
-│       └── new-feature/              # 새 기능 요청서를 만드는 스킬
-│           └── SKILL.md              # 두 인자로 기능 폴더를 만들고 요청서 템플릿을 복사하는 절차
-├── projects/                         # 프로젝트별 기획 문서
-│   ├── raidio/                       # raidio 프로젝트
-│   │   ├── project.md                # raidio의 목표, 범위, 주요 결정 사항을 기록하는 문서
-│   │   └── features/                 # raidio의 기능별 기획 문서 폴더
-│   ├── raidio-biz/                   # raidio-biz 프로젝트
-│   │   ├── project.md                # raidio-biz의 목표, 범위, 주요 결정 사항을 기록하는 문서
-│   │   └── features/                 # raidio-biz의 기능별 기획 문서 폴더
-│   └── raidio-brand/                 # raidio-brand 프로젝트
-│       ├── project.md                # raidio-brand의 목표, 범위, 주요 결정 사항을 기록하는 문서
-│       └── features/                 # raidio-brand의 기능별 기획 문서 폴더
-└── templates/                        # 프로젝트에서 공통으로 사용하는 기획 문서 템플릿
-    ├── request.md                    # 요청 배경, 대상 사용자, 기대 결과를 정리하는 템플릿
-    ├── analysis.md                   # 현재 흐름, 근거, 가설, 대안을 정리하는 템플릿
-    ├── requirements.md               # 범위, 동작, 예외, 요구사항 충족 기준을 정의하는 템플릿
-    └── tasks.md                      # 요구사항을 실행 과제와 완료 조건으로 정리하는 템플릿
+├── README.md                             # 저장소 소개와 사용법
+├── AGENTS.md                             # 기획 작업 흐름과 문서 작성 지침
+├── planning-process-guide.md             # Codex CLI를 활용한 단계별 기획 가이드
+├── change-request-guide.md               # 요청사항 변경 시 산출물 갱신 가이드
+├── .agents/                              # 저장소 전용 Codex 리소스
+│   └── skills/                           # 기획 단계별 Codex 스킬
+│       ├── new-feature/
+│       │   └── SKILL.md                  # 기능 폴더 생성과 요청서 템플릿 복사 절차
+│       ├── analyze-request/
+│       │   └── SKILL.md                  # 요청서 검토와 분석서 작성 절차
+│       ├── define-requirements/
+│       │   └── SKILL.md                  # 사용자 흐름, 정책, 예외, 확인 기준 정의 절차
+│       ├── plan-tasks/
+│       │   └── SKILL.md                  # 요구사항을 실행 과제와 완료 조건으로 구체화하는 절차
+│       ├── define-screen-flow/
+│       │   └── SKILL.md                  # Figma 화면정의서와 프로세스 흐름 작성 절차
+│       └── export-project-status/
+│           └── SKILL.md                  # 프로젝트별 기획 문서 작성률과 미작성 문서 집계 절차
+├── projects/                             # 프로젝트별 기획 문서
+│   ├── raidio/                           # raidio 프로젝트
+│   │   ├── project.md                    # 프로젝트 목표, 범위, 주요 결정 사항
+│   │   └── features/                     # 기능별 기획 문서 폴더
+│   ├── raidio-biz/                       # raidio-biz 프로젝트
+│   │   ├── project.md                    # 프로젝트 목표, 범위, 주요 결정 사항
+│   │   └── features/                     # 기능별 기획 문서 폴더
+│   │       └── winter-new-channel-popup/ # 겨울 신규채널 안내 기능
+│   │           ├── request.md            # 요청 배경과 기대 결과
+│   │           ├── analysis.md           # 요청 내용 검토와 확인이 필요한 질문
+│   │           ├── requirements.md       # 사용자 흐름, 정책, 예외, 확인 기준
+│   │           └── tasks.md              # 실행 과제, 선행 조건, 완료 조건
+│   └── raidio-brand/                     # raidio-brand 프로젝트
+│       ├── project.md                    # 프로젝트 목표, 범위, 주요 결정 사항
+│       └── features/                     # 기능별 기획 문서 폴더
+├── status-reports/                       # 프로젝트별 기획 산출물 작업현황표
+│   ├── raidio-status.md                  # raidio 작업현황표
+│   ├── raidio-biz-status.md              # raidio-biz 작업현황표
+│   └── raidio-brand-status.md            # raidio-brand 작업현황표
+└── templates/                            # 공용 기획 문서 템플릿
+    ├── request.md                        # 요청 배경, 대상 사용자, 기대 결과 정리
+    ├── analysis.md                       # 현재 흐름, 근거, 가설, 대안 검토
+    ├── requirements.md                   # 범위, 동작, 예외, 확인 기준 정의
+    └── tasks.md                          # 실행 과제, 선행 조건, 완료 조건 정리
 ```
 
 ## 기획 프로세스
